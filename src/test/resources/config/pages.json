@@ -1,0 +1,35 @@
+{
+  "amazon": {
+    "url": "https://www.amazon.com.tr/",
+    "elements": {
+      "satis" : "//*[@id='nav-xshop']/a[3]",
+      "hizmet" : "//*[@id='nav-links']/li[1]/a",
+      "login_box": "//*[@id=\"nav-link-yourAccount\"]",
+      "inner_login": "//span[text()='Giriş yap'][1]",
+      "email": "//input[@type='email']",
+      "password": "//input[@type='password']",
+      "login_button": "//input[@id='signInSubmit']",
+      "hollanda": "//*[@id=\"navFooter\"]/div[4]/ul/li[11]/a",
+      "text_start": "//*[contains(text(),'keşfet')]",
+      "text_end": "//*[contains(text(),'deneyiminizi')]",
+      "all_categories": "//a[@aria-label='Tüm kategoriler']",
+      "hided_scroll": "//span[@class='feed-scrollbar']",
+      "scroll_bar": "//span[@class='feed-scrollbar-thumb']",
+      "text_new": "//*[@id='a-page']/div[2]/div/div/div[2]/div[2]/div/h1/p[1]/strong/span/span"
+    }
+  },
+  "google": {
+    "url": "https://www.google.com/",
+    "elements": {
+    }
+  },
+  "test": {
+    "url": "https://www.webpagetest.org/",
+    "elements": {
+      "mainPanel": "/html",
+      "iframe": "//*[@id=\"aswift_0\"]",
+      "doc": "//a[text()='Documentation']",
+      "inner_frame": "//*[@id=\"google_ads_frame1\"]"
+    }
+  }
+}
