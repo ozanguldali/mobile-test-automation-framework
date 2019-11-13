@@ -1,0 +1,7 @@
+{
+  "appiumHost": "127.0.0.1",
+  "appiumPort": "2222",
+
+  "restHost": "127.0.0.1"
+}
+
