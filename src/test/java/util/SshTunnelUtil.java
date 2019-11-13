@@ -14,7 +14,7 @@ import static util.LoggingUtil.LOGGER;
 
 public class SshTunnelUtil {
 
-    private static Session session = null;
+   /* private static Session session = null;
     private static Channel channel = null;
 
     public static void openTunnel() {
@@ -202,5 +202,5 @@ public class SshTunnelUtil {
         }
 
     }
-
+*/
 }

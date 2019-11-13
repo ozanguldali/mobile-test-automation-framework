@@ -18,7 +18,7 @@ public class BaseFeaturesTest {
 
         String[] args = new String[ 0 ];
 
-        emulatorRunner.main( args );
+        //emulatorRunner.main( args );
 
         open.main( args );
 

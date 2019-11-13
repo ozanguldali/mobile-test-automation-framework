@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import static util.BannerUtil.paintBanner;
 import static util.EnvironmentUtil.SLASH;
-import static util.SshTunnelUtil.openTunnel;
+//import static util.SshTunnelUtil.openTunnel;
 
 public class BaseRerunTest {
     private static final String RERUN_DIR = "build/rerun";
@@ -18,7 +18,7 @@ public class BaseRerunTest {
 
         paintBanner();
 
-        openTunnel();
+        //openTunnel();
 
     }
 

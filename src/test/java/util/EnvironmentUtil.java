@@ -23,7 +23,7 @@ public final class EnvironmentUtil extends EnvironmentHelper {
 
     public static final String REST_HOST = getJsonElement( environmentObject, "restHost" ).getAsString();
 
-    public static final String SSH_USER = getJsonElement( environmentObject, "sshUser" ).getAsString();
+/*    public static final String SSH_USER = getJsonElement( environmentObject, "sshUser" ).getAsString();
     public static final String SSH_HOST = getJsonElement( environmentObject, "sshHost" ).getAsString();
     public static final String SSH_PORT = getJsonElement( environmentObject, "sshPort" ).getAsString();
     public static final String KEY_FILE = getJsonElement( environmentObject, "keyFile" ).getAsString();
@@ -33,6 +33,6 @@ public final class EnvironmentUtil extends EnvironmentHelper {
     public static final String DB_HOST = getJsonElement( environmentObject, "dbHost" ).getAsString();
     public static final String DB_DRIVER_CLASS = getJsonElement( environmentObject, "dbDriverClass" ).getAsString();
 
-    public static final String CACHE_CONTROL = getJsonElement( environmentObject, "Cache-Control" ).getAsString();
+    public static final String CACHE_CONTROL = getJsonElement( environmentObject, "Cache-Control" ).getAsString();*/
 
 }

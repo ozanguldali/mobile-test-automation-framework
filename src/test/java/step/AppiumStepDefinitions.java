@@ -25,7 +25,7 @@ import static util.ServerUtil.isPortAvailableSocket;
 public class AppiumStepDefinitions {
 
     static AppiumDriver appiumDriver = null;
-    public static DesiredCapabilities desiredCapabilities;
+    private static DesiredCapabilities desiredCapabilities;
 
     public static AppiumDriverLocalService service;
     private static JsonObject pageObject;

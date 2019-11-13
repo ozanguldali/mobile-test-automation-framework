@@ -20,6 +20,31 @@ public class AppiumStepHelper {
 
             switch ( key ) {
 
+                case MobileCapabilityType.AUTOMATION_NAME:
+                    desiredCapabilities.setCapability( MobileCapabilityType.AUTOMATION_NAME, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case MobileCapabilityType.UDID:
+                    desiredCapabilities.setCapability( MobileCapabilityType.UDID, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case MobileCapabilityType.APP:
+                    desiredCapabilities.setCapability( MobileCapabilityType.APP, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case "xcodeOrgId":
+                    desiredCapabilities.setCapability( "xcodeOrgId", value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case "xcodeSigningId":
+                    desiredCapabilities.setCapability( "xcodeSigningId", value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
                 case MobileCapabilityType.PLATFORM_NAME:
                     desiredCapabilities.setCapability( MobileCapabilityType.PLATFORM_NAME, value );
                     LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
