@@ -20,6 +20,21 @@ public class AppiumStepHelper {
 
             switch ( key ) {
 
+                case "appPackage":
+                    desiredCapabilities.setCapability( key, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case "appActivity":
+                    desiredCapabilities.setCapability( key, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
+                case "bundleId":
+                    desiredCapabilities.setCapability( key, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
                 case MobileCapabilityType.AUTOMATION_NAME:
                     desiredCapabilities.setCapability( MobileCapabilityType.AUTOMATION_NAME, value );
                     LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
@@ -36,12 +51,12 @@ public class AppiumStepHelper {
                     break;
 
                 case "xcodeOrgId":
-                    desiredCapabilities.setCapability( "xcodeOrgId", value );
+                    desiredCapabilities.setCapability( key, value );
                     LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
                     break;
 
                 case "xcodeSigningId":
-                    desiredCapabilities.setCapability( "xcodeSigningId", value );
+                    desiredCapabilities.setCapability( key, value );
                     LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
                     break;
 
@@ -76,33 +91,76 @@ public class AppiumStepHelper {
                     break;
 
                 default:
-                    if ( key.equals( MobileCapabilityType.NO_RESET ) ) {
-
-                        desiredCapabilities.setCapability( key, value );
-                        LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-                    } else if ( key.equals( MobileCapabilityType.CLEAR_SYSTEM_FILES ) ) {
-
-                        desiredCapabilities.setCapability( key, value );
-                        LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-                    } else {
-
-                        desiredCapabilities.setCapability( MobileCapabilityType.NO_RESET, "false" );
-                        LOGGER.info( "\tThe capability key: [\"noReset\"] set as default value: [\"false\"].\t\n" );
-
-                        desiredCapabilities.setCapability( MobileCapabilityType.CLEAR_SYSTEM_FILES, true );
-                        LOGGER.info( "\tThe capability key: [\"clearSystemFiles\"] set as default value: [\"true\"].\t\n" );
-
-                        LOGGER.info( "\tThe capability key: [" + key + "] is not valid, thus it was not set.\t\n" );
-
-                    }
-
+                    LOGGER.info( "\tThe capability key: [" + key + "] is not valid, thus default values will be set.\t\n" );
                     break;
 
             }
 
+            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.NO_RESET, true, key, value);
+            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.FULL_RESET, false, key, value);
+            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true, key, value);
+            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, 600, key, value);
+
+/*            if ( key.contains( MobileCapabilityType.NO_RESET ) ) {
+
+                desiredCapabilities.setCapability( key, value );
+                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+
+            } else {
+
+                desiredCapabilities.setCapability( MobileCapabilityType.NO_RESET, true );
+                LOGGER.info( "\tThe capability key: [\"noReset\"] set as default value: [\"false\"].\t\n" );
+            }
+
+            if ( key.contains( MobileCapabilityType.FULL_RESET ) ) {
+
+                desiredCapabilities.setCapability( key, value );
+                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+
+            } else {
+
+                desiredCapabilities.setCapability( MobileCapabilityType.FULL_RESET, false );
+                LOGGER.info( "\tThe capability key: [\"noReset\"] set as default value: [\"false\"].\t\n" );
+            }
+
+            if ( key.contains( MobileCapabilityType.CLEAR_SYSTEM_FILES ) ) {
+                desiredCapabilities.setCapability( key, value );
+                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+
+            } else {
+
+                desiredCapabilities.setCapability( MobileCapabilityType.CLEAR_SYSTEM_FILES, true );
+                LOGGER.info( "\tThe capability key: [\"clearSystemFiles\"] set as default value: [\"true\"].\t\n" );
+
+            }
+
+            if ( key.contains( MobileCapabilityType.NEW_COMMAND_TIMEOUT ) ) {
+                desiredCapabilities.setCapability( key, value );
+                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+
+            } else {
+
+                desiredCapabilities.setCapability( MobileCapabilityType.NEW_COMMAND_TIMEOUT, 600 );
+                LOGGER.info( "\tThe capability key: [\"clearSystemFiles\"] set as default value: [\"true\"].\t\n" );
+
+            }*/
+
         } );
+
+    }
+
+    private static void setDefaultCapabilities(DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue, String key, String value) {
+
+        if ( key.contains( defaultKey ) ) {
+            desiredCapabilities.setCapability( key, value );
+            LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+
+        } else {
+
+            desiredCapabilities.setCapability( defaultKey, defaultValue );
+            LOGGER.info( "\tThe capability key: [" + defaultKey + "] set as value: [" + defaultValue + "].\t\n" );
+
+        }
 
     }
 

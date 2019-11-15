@@ -16,6 +16,7 @@ import static helper.AppiumStepHelper.*;
 import static util.AppiumStepUtil.navigateToURL;
 import static util.AppiumUtil.startAppiumServer;
 import static util.AppiumUtil.stopAppiumServer;
+import static util.CommonStepUtil.closeAppiumDriver;
 import static util.DriverUtil.setDriver;
 import static util.EnvironmentUtil.APPIUM_HOST;
 import static util.EnvironmentUtil.APPIUM_PORT;
@@ -24,8 +25,8 @@ import static util.ServerUtil.isPortAvailableSocket;
 
 public class AppiumStepDefinitions {
 
-    static AppiumDriver appiumDriver = null;
-    private static DesiredCapabilities desiredCapabilities;
+    public static AppiumDriver appiumDriver = null;
+    public static DesiredCapabilities desiredCapabilities;
 
     public static AppiumDriverLocalService service;
     private static JsonObject pageObject;
@@ -93,16 +94,48 @@ public class AppiumStepDefinitions {
 
         }
 
+        if ( appiumDriver != null )
+            appiumDriver.launchApp();
+
+        else {
+
+            try {
+
+                appiumDriver = setDriver( driverSelect, url, desiredCapabilities );
+
+                LOGGER.info( String.format("\tDriver has been selected as: [%s]\t\n", driverSelect ) );
+
+            } catch ( Exception e ) {
+
+                LOGGER.info( String.format( "\tDriver could NOT been selected as: [%s], because { error: [%s] }\t\n", driverSelect, e.getMessage() ) );
+                Assert.fail( String.format( "\tDriver could NOT been selected as: [%s], because { error: [%s] }\t\n", driverSelect, e.getMessage() ) );
+
+            }
+
+        }
+
+    }
+
+    @Given("^I close driver$")
+    public static void closeDriver() {
+
+        closeAppiumDriver();
+
+    }
+
+    @Given("^I reset driver$")
+    public static void resetDriver() {
+
         try {
 
-            appiumDriver = setDriver( driverSelect, url, desiredCapabilities );
+            appiumDriver.resetApp();
 
-            LOGGER.info( String.format("\tDriver has been selected as: [%s]\t\n", driverSelect ) );
+            LOGGER.trace( String.format( "\tThe appium driver: [ %s ] has been reset.\t\n", appiumDriver.toString() ) );
 
-        } catch ( Exception e ) {
+        } catch (Exception e) {
 
-            LOGGER.info( String.format( "\tDriver could NOT been selected as: [%s], because { error: [%s] }\t\n", driverSelect, e.getMessage() ) );
-            Assert.fail( String.format( "\tDriver could NOT been selected as: [%s], because { error: [%s] }\t\n", driverSelect, e.getMessage() ) );
+            LOGGER.info( String.format( "\tThe appium driver: [ %s ] could NOT been reset\t\n", appiumDriver.toString() ) );
+            Assert.fail( String.format( "\tThe appium driver: [ %s ] could NOT been reset\t\n", appiumDriver.toString() ) );
 
         }
 

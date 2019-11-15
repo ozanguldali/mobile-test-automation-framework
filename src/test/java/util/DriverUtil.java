@@ -2,6 +2,7 @@ package util;
 
 import io.appium.java_client.AppiumDriver;
 import org.junit.Assert;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -15,6 +16,9 @@ public class DriverUtil {
 
     public static AppiumDriver setDriver(String driverSelect, URL url, DesiredCapabilities desiredCapabilities) {
 
+        if ( driverSelect.equals( "appium" ) )
+            return ( new AppiumDriver( url, desiredCapabilities ) );
+
         String osLower = OS_VALUE.toLowerCase();
 
         try {
@@ -25,8 +29,12 @@ public class DriverUtil {
 
                 try {
 
-                    if ( driverSelect.equals( "chrome" ) )
+                    if ( driverSelect.equals( "chrome" ) ) {
+
                         System.setProperty( "appiumdriver.chrome.driver", ( new File( winPath + SLASH + "chromedriver.exe" ) ).getAbsolutePath() );
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        desiredCapabilities.merge( chromeOptions );
+                    }
                     else if ( driverSelect.contains( "firefox" ) )
                         System.setProperty( "appiumdriver.gecko.driver", ( new File( winPath + SLASH + "geckodriver.exe" ) ).getAbsolutePath() );
                     else if ( driverSelect.contains("edge" ) )
@@ -51,8 +59,11 @@ public class DriverUtil {
 
                 try {
 
-                    if ( driverSelect.equals( "chrome" ) )
+                    if ( driverSelect.equals( "chrome" ) ) {
                         System.setProperty( "appiumdriver.chrome.driver", ( new File( macPath + SLASH + "chromedriver" ) ).getAbsolutePath() );
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        desiredCapabilities.merge( chromeOptions );
+                    }
                     else if ( driverSelect.contains( "firefox" ) )
                         System.setProperty( "appiumdriver.gecko.driver", ( new File( macPath + SLASH + "geckodriver" ) ).getAbsolutePath() );
                     else if ( driverSelect.contains( "opera" ) )
@@ -82,8 +93,11 @@ public class DriverUtil {
 
                 try {
 
-                    if ( driverSelect.equals( "chrome" ) )
+                    if ( driverSelect.equals( "chrome" ) ) {
                         System.setProperty( "appiumdriver.chrome.driver", ( new File( linuxPath + SLASH + "chromedriver" ) ).getAbsolutePath() );
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        desiredCapabilities.merge( chromeOptions );
+                    }
                     else if ( driverSelect.contains("firefox" ) )
                         System.setProperty( "appiumdriver.gecko.driver", ( new File( linuxPath + SLASH + "geckodriver" ) ).getAbsolutePath() );
                     else if ( driverSelect.contains( "opera" ) )

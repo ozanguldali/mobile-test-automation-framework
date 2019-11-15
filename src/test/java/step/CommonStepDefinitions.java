@@ -9,7 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import static step.AppiumStepDefinitions.appiumDriver;
-import static util.CommonStepUtil.quitAppiumDriver;
+import static util.CommonStepUtil.*;
 import static util.LoggingUtil.LOGGER;
 
 public class CommonStepDefinitions {
@@ -46,7 +46,8 @@ public class CommonStepDefinitions {
 
                 }
 
-                quitAppiumDriver( appiumDriver );
+                quitAppiumSession();
+                //closeAppiumDriver( appiumDriver );
 
             }
 
@@ -59,11 +60,16 @@ public class CommonStepDefinitions {
         } else {
 
             if ( appiumDriver != null )
-                quitAppiumDriver( appiumDriver );
+                quitAppiumSession();
+                //closeAppiumDriver( appiumDriver );
 
 //            stopAppiumServer( port );
 
         }
+
+        appiumDriver = null;
+
+        LOGGER.info( "\tAppium Driver is set as 'null'\t\n" );
 
         String result = scenario.isFailed() ? "with errors" : "succesfully";
 
