@@ -20,6 +20,11 @@ public class AppiumStepHelper {
 
             switch ( key ) {
 
+                case "networkSpeed":
+                    desiredCapabilities.setCapability( key, value );
+                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
+                    break;
+
                 case "appPackage":
                     desiredCapabilities.setCapability( key, value );
                     LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
@@ -100,6 +105,9 @@ public class AppiumStepHelper {
             setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.FULL_RESET, false, key, value);
             setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true, key, value);
             setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, 600, key, value);
+            setDefaultCapabilities(desiredCapabilities, "isHeadless", true, key, value);
+            setDefaultCapabilities(desiredCapabilities, "adbExecTimeout", 60000, key, value);
+
 
 /*            if ( key.contains( MobileCapabilityType.NO_RESET ) ) {
 
@@ -146,6 +154,13 @@ public class AppiumStepHelper {
             }*/
 
         } );
+
+    }
+
+    private static void setDesiredCapabilities(DesiredCapabilities desiredCapabilities, String key, Object value) {
+
+        desiredCapabilities.setCapability( key, value );
+        LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
 
     }
 

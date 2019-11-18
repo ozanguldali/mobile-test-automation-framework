@@ -119,7 +119,7 @@ public class AppiumStepDefinitions {
     @Given("^I close driver$")
     public static void closeDriver() {
 
-        closeAppiumDriver();
+        closeAppiumDriver( true );
 
     }
 

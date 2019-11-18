@@ -5,11 +5,12 @@ import org.junit.Assert;
 
 import static step.AppiumStepDefinitions.appiumDriver;
 import static step.AppiumStepDefinitions.desiredCapabilities;
+import static step.CommonStepDefinitions.waitForNSeconds;
 import static util.LoggingUtil.LOGGER;
 
 public class CommonStepUtil {
 
-    public static void closeAppiumDriver() {
+    public static void closeAppiumDriver(Boolean isFirst) {
 
         try {
 
@@ -21,6 +22,9 @@ public class CommonStepUtil {
 
         } catch (Exception e) {
 
+            if( isFirst )
+                closeAppiumDriver( false );
+
             LOGGER.info( String.format( "\tThe appium driver: [ %s ] could NOT been closed\t\n", appiumDriver.toString() ) );
             Assert.fail( String.format( "\tThe appium driver: [ %s ] could NOT been closed\t\n", appiumDriver.toString() ) );
 
@@ -28,7 +32,7 @@ public class CommonStepUtil {
 
     }
 
-    public static void quitAppiumSession() {
+    public static void quitAppiumSession(Boolean isFirst) {
 
 //        closeAppiumDriver( appiumDriver );
 
@@ -37,6 +41,13 @@ public class CommonStepUtil {
             LOGGER.info( String.format( "\tThe appium driver session: [ %s ] is closing.\t\n", appiumDriver.getSessionId() ) );
 
             appiumDriver.quit();
+
+            if ( isFirst && appiumDriver.getSessionId() != null ) {
+
+                quitAppiumSession( false );
+                waitForNSeconds( 5 );
+
+            }
 
         } catch (Exception e) {
 
@@ -49,7 +60,7 @@ public class CommonStepUtil {
 
     public static void killAppiumDriver() {
 
-        closeAppiumDriver();
+        closeAppiumDriver( true );
 
         String bundleId = desiredCapabilities.getCapability( "bundleId" ).toString();
 

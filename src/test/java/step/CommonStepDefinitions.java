@@ -46,7 +46,7 @@ public class CommonStepDefinitions {
 
                 }
 
-                quitAppiumSession();
+                quitAppiumSession(true);
                 //closeAppiumDriver( appiumDriver );
 
             }
@@ -60,7 +60,7 @@ public class CommonStepDefinitions {
         } else {
 
             if ( appiumDriver != null )
-                quitAppiumSession();
+                quitAppiumSession(true);
                 //closeAppiumDriver( appiumDriver );
 
 //            stopAppiumServer( port );
