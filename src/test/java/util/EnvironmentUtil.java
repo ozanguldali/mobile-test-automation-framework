@@ -20,6 +20,7 @@ public final class EnvironmentUtil extends EnvironmentHelper {
 
     public static final String APPIUM_HOST = getJsonElement( environmentObject, "appiumHost" ).getAsString();
     public static final String APPIUM_PORT = getJsonElement( environmentObject, "appiumPort" ).getAsString();
+    public static final int NEW_COMMAND_TIMEOUT = getJsonElement( environmentObject, "appiumNewCommandTimeout").getAsInt();
 
     public static final String REST_HOST = getJsonElement( environmentObject, "restHost" ).getAsString();
 

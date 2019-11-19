@@ -20,7 +20,6 @@ public class CommonStepDefinitions {
     @Before
     public void beforeScenario(Scenario scenario) {
 
-
         LOGGER.info( String.format( "\t[%d] > Scenario [%s] started\t\n", ++scenariosCounter, scenario.getName() ) );
 
     }

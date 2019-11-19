@@ -7,83 +7,71 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import util.ParserUtil;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 import static step.AppiumStepDefinitions.host;
 import static step.AppiumStepDefinitions.port;
+import static util.EnvironmentUtil.NEW_COMMAND_TIMEOUT;
 import static util.LoggingUtil.LOGGER;
 
 public class AppiumStepHelper {
+
     public static void setDesiredCapabilities(DesiredCapabilities desiredCapabilities, Map<String, String> dataMap) {
+
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NO_RESET, true );
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.FULL_RESET, false );
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true );
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, NEW_COMMAND_TIMEOUT );
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.TAKES_SCREENSHOT, true );
+        setDefaultCapabilities( dataMap, desiredCapabilities, "isHeadless", true );
+        setDefaultCapabilities( dataMap, desiredCapabilities, "adbExecTimeout", 60000 );
 
         dataMap.forEach( ( key, value ) -> {
 
             switch ( key ) {
 
                 case "networkSpeed":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case "appPackage":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case "appActivity":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case "bundleId":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.AUTOMATION_NAME:
-                    desiredCapabilities.setCapability( MobileCapabilityType.AUTOMATION_NAME, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.UDID:
-                    desiredCapabilities.setCapability( MobileCapabilityType.UDID, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.APP:
-                    desiredCapabilities.setCapability( MobileCapabilityType.APP, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case "xcodeOrgId":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case "xcodeSigningId":
-                    desiredCapabilities.setCapability( key, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.PLATFORM_NAME:
-                    desiredCapabilities.setCapability( MobileCapabilityType.PLATFORM_NAME, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.PLATFORM_VERSION:
-                    desiredCapabilities.setCapability( MobileCapabilityType.PLATFORM_VERSION, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.BROWSER_NAME:
-                    desiredCapabilities.setCapability( MobileCapabilityType.BROWSER_NAME, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
 
                 case MobileCapabilityType.DEVICE_NAME:
-                    desiredCapabilities.setCapability( MobileCapabilityType.DEVICE_NAME, value );
-                    LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-                    break;
+
+                case MobileCapabilityType.NO_RESET:
+
+                case MobileCapabilityType.FULL_RESET:
+
+                case MobileCapabilityType.CLEAR_SYSTEM_FILES:
+
+                case MobileCapabilityType.NEW_COMMAND_TIMEOUT:
+
+                case MobileCapabilityType.TAKES_SCREENSHOT:
+                    setDesiredCapabilities( desiredCapabilities, key, value );
+
+                case "isHeadless":
+
+                case "adbExecTimeout":
+                    setDesiredCapabilities( desiredCapabilities, key, value );
 
                 case "port":
                     port = value;
@@ -101,58 +89,6 @@ public class AppiumStepHelper {
 
             }
 
-            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.NO_RESET, true, key, value);
-            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.FULL_RESET, false, key, value);
-            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true, key, value);
-            setDefaultCapabilities(desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, 600, key, value);
-            setDefaultCapabilities(desiredCapabilities, "isHeadless", true, key, value);
-            setDefaultCapabilities(desiredCapabilities, "adbExecTimeout", 60000, key, value);
-
-
-/*            if ( key.contains( MobileCapabilityType.NO_RESET ) ) {
-
-                desiredCapabilities.setCapability( key, value );
-                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-            } else {
-
-                desiredCapabilities.setCapability( MobileCapabilityType.NO_RESET, true );
-                LOGGER.info( "\tThe capability key: [\"noReset\"] set as default value: [\"false\"].\t\n" );
-            }
-
-            if ( key.contains( MobileCapabilityType.FULL_RESET ) ) {
-
-                desiredCapabilities.setCapability( key, value );
-                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-            } else {
-
-                desiredCapabilities.setCapability( MobileCapabilityType.FULL_RESET, false );
-                LOGGER.info( "\tThe capability key: [\"noReset\"] set as default value: [\"false\"].\t\n" );
-            }
-
-            if ( key.contains( MobileCapabilityType.CLEAR_SYSTEM_FILES ) ) {
-                desiredCapabilities.setCapability( key, value );
-                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-            } else {
-
-                desiredCapabilities.setCapability( MobileCapabilityType.CLEAR_SYSTEM_FILES, true );
-                LOGGER.info( "\tThe capability key: [\"clearSystemFiles\"] set as default value: [\"true\"].\t\n" );
-
-            }
-
-            if ( key.contains( MobileCapabilityType.NEW_COMMAND_TIMEOUT ) ) {
-                desiredCapabilities.setCapability( key, value );
-                LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-            } else {
-
-                desiredCapabilities.setCapability( MobileCapabilityType.NEW_COMMAND_TIMEOUT, 600 );
-                LOGGER.info( "\tThe capability key: [\"clearSystemFiles\"] set as default value: [\"true\"].\t\n" );
-
-            }*/
-
         } );
 
     }
@@ -164,13 +100,9 @@ public class AppiumStepHelper {
 
     }
 
-    private static void setDefaultCapabilities(DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue, String key, String value) {
+    private static void setDefaultCapabilities(Map dataMap, DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue) {
 
-        if ( key.contains( defaultKey ) ) {
-            desiredCapabilities.setCapability( key, value );
-            LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );
-
-        } else {
+        if ( !dataMap.containsKey( defaultKey ) ) {
 
             desiredCapabilities.setCapability( defaultKey, defaultValue );
             LOGGER.info( "\tThe capability key: [" + defaultKey + "] set as value: [" + defaultValue + "].\t\n" );
