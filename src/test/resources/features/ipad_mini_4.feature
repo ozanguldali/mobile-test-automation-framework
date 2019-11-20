@@ -31,7 +31,7 @@ Feature: iPad Mini 4 Feature
 
     Then I close driver
 
-  @ios
+  @ios @ignore
   Scenario: 1 - ios test init scenario
 
     Given I use appium driver
