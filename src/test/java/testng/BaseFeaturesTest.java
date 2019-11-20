@@ -16,11 +16,11 @@ public class BaseFeaturesTest {
 
     public BaseFeaturesTest() {
 
-        String[] args = new String[ 0 ];
+//        String[] args = new String[ 0 ];
 
         //emulatorRunner.main( args );
 
-        open.main( args );
+//        open.main( args );
 
     }
 

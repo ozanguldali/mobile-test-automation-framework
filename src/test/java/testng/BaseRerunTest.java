@@ -16,7 +16,7 @@ public class BaseRerunTest {
 
     public BaseRerunTest() {
 
-        paintBanner();
+//        paintBanner();
 
         //openTunnel();
 

@@ -24,15 +24,11 @@
         <testngParallelDir>src/test/resources/testng-parallel.xml</testngParallelDir>
         <testngRerunDir>src/test/resources/testng-rerun.xml</testngRerunDir>
         <testReportDir>target</testReportDir>
-        <buildDirectory>${project.basedir}/out/artifacts/mobile_test_automation_framework_jar</buildDirectory>
+        <finartz.repo.url>https://artifactory.finartz.com/artifactory/acs-finartz-repo</finartz.repo.url>
     </properties>
 
     <build>
-
-        <directory>${buildDirectory}</directory>
-
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -42,7 +38,6 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -57,7 +52,6 @@
                     <threadCount>15</threadCount>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
@@ -84,9 +78,7 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
     </build>
 
     <dependencies>

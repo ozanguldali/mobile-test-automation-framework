@@ -41,12 +41,12 @@ public class TestNGUtil {
         options.add( "step" );
         options.add( "-p" );
         options.add( "html:target/reports/" + feature );
-//        options.add( "-p" );
-//        options.add( "html:target/site/cucumber-pretty/" + feature );
         options.add( "-p" );
-        options.add( "json:target/reports/json/" + feature + ".json" );
+        options.add( "html:target/site/cucumber-pretty/" + feature );
 //        options.add( "-p" );
-//        options.add( "json:target/site/cucumber-files/" + feature + ".json" );
+//        options.add( "json:target/reports/json/" + feature + ".json" );
+        options.add( "-p" );
+        options.add( "json:target/site/cucumber-files/" + feature + ".json" );
 //        options.add( "-p" );
 //        options.add( "json:target/site/cucumber-jvm-reports/" + feature + ".json" );
 //        options.add( "-p" );

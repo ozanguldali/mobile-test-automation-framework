@@ -66,12 +66,12 @@ public class AppiumStepHelper {
                 case MobileCapabilityType.NEW_COMMAND_TIMEOUT:
 
                 case MobileCapabilityType.TAKES_SCREENSHOT:
-                    setDesiredCapabilities( desiredCapabilities, key, value );
 
                 case "isHeadless":
 
                 case "adbExecTimeout":
                     setDesiredCapabilities( desiredCapabilities, key, value );
+                    break;
 
                 case "port":
                     port = value;

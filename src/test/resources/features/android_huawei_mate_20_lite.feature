@@ -1,4 +1,5 @@
-Feature: Android Feature
+@huawei
+Feature: Huawei Mate 20 Lite Feature
 
   Background:
 

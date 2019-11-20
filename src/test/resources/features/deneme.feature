@@ -56,7 +56,7 @@ Feature: Deneme Feature
 
     Given I use following capabilities:
       | udid | HVYDU19429004798 |
-      | automationName| UiAutomator2 |
+      | automationName| UiAutomator1 |
       |platformName|Android|
       |platformVersion|9|
       |deviceName|HUAWEI Mate 20 lite|
@@ -82,6 +82,7 @@ Feature: Deneme Feature
 
     Then I close driver
 
+  @ignore
   Scenario: 1 - android google test
 
     Given I use following capabilities:
@@ -96,6 +97,7 @@ Feature: Deneme Feature
 
     Then I open google page
 
+  @ignore
   Scenario: 2 - android test test
 
     Given I use following capabilities:
