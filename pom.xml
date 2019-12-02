@@ -17,7 +17,9 @@
         <thaleshsm.version>0.0.5</thaleshsm.version>
         <safenethsm.version>1.0</safenethsm.version>
         <cucumber.version>1.2.5</cucumber.version>
-        <selenium.version>3.13.0</selenium.version>
+        <selenium.version>3.141.59</selenium.version>
+        <appium.version>7.2.0</appium.version>
+        <jmeter.version>5.2</jmeter.version>
         <java.version>1.8</java.version>
         <testngDir>src/test/resources/testng.xml</testngDir>
         <testngInitDir>src/test/resources/testng-init.xml</testngInitDir>
@@ -26,6 +28,13 @@
         <testReportDir>target</testReportDir>
         <finartz.repo.url>https://artifactory.finartz.com/artifactory/acs-finartz-repo</finartz.repo.url>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -83,6 +92,13 @@
 
     <dependencies>
 
+<!--        Java-Client-->
+        <dependency>
+            <groupId>com.github.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
+
 <!--        TestNG-->
         <dependency>
             <groupId>org.testng</groupId>
@@ -136,7 +152,7 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>6.0.0</version>
+            <version>${appium.version}</version>
         </dependency>
 
 <!--        Rest-->
@@ -149,7 +165,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -207,10 +223,10 @@
         </dependency>
 
 <!--        JMeter-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.jmeter</groupId>
             <artifactId>ApacheJMeter_core</artifactId>
-            <version>4.0</version>
+            <version>${jmeter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -224,38 +240,38 @@
             <artifactId>ApacheJMeter_http</artifactId>
             <version>4.0</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
 <!--        Gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.4</version>
+            <version>2.8.5</version>
 <!--            <scope>test</scope>-->
         </dependency>
 
 <!--        Jsoup-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.11.3</version>
-        </dependency>
+        </dependency>-->
 
 <!--        jose-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-jose</artifactId>
-            <version>3.1.7</version>
+            <version>3.2.11</version>
         </dependency>
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>7.9</version>
+            <version>8.2</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
 <!--        Security-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.60</version>
@@ -265,7 +281,7 @@
             <artifactId>jsch</artifactId>
             <version>0.1.54</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
 <!--        Oracle 6-->
         <dependency>
@@ -279,7 +295,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>3.2.0</version>
+            <version>3.4.1</version>
         </dependency>
 
     </dependencies>
