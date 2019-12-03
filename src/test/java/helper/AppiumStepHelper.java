@@ -26,6 +26,7 @@ public class AppiumStepHelper {
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.TAKES_SCREENSHOT, true );
         setDefaultCapabilities( dataMap, desiredCapabilities, "isHeadless", true );
         setDefaultCapabilities( dataMap, desiredCapabilities, "adbExecTimeout", 60000 );
+        setDefaultCapabilities( dataMap, desiredCapabilities, "WDALOCALPORT", 8200 );
 
         dataMap.forEach( ( key, value ) -> {
 
@@ -67,6 +68,8 @@ public class AppiumStepHelper {
 
                 case MobileCapabilityType.TAKES_SCREENSHOT:
 
+                case "WDALOCALPORT":
+
                 case "isHeadless":
 
                 case "adbExecTimeout":
@@ -100,7 +103,7 @@ public class AppiumStepHelper {
 
     }
 
-    private static void setDefaultCapabilities(Map dataMap, DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue) {
+    private static void setDefaultCapabilities(Map<String, String> dataMap, DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue) {
 
         if ( !dataMap.containsKey( defaultKey ) ) {
 

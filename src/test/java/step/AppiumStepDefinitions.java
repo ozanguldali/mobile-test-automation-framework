@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.junit.Assert;
@@ -66,14 +67,14 @@ public class AppiumStepDefinitions {
 
     }
 
-    @Given("^I close appium server")
+    @Given("^I close appium server$")
     public void stopServer() {
 
         stopAppiumServer( port );
 
     }
 
-    @Given("^I use following capabilities:")
+    @Given("^I use following capabilities:$")
     public static void useCapabilities(Map<String, String> dataMap) {
 
         desiredCapabilities = new DesiredCapabilities();
