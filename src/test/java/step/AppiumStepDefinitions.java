@@ -75,12 +75,21 @@ public class AppiumStepDefinitions {
 
     }
 
+    @Given("^I use propertied capabilities$")
+    public static void usePropertiedCapabilities() {
+
+        if ( desiredCapabilities == null )
+            desiredCapabilities = new DesiredCapabilities();
+
+        setPropertiedCapabilities( desiredCapabilities );
+
+    }
+
     @Given("^I use following capabilities:$")
-    public static void useCapabilities(Map<String, String> dataMap) {
+    public static void useFollowingCapabilities(Map<String, String> dataMap) {
 
-        String s = PROJECT_DIR;
-
-        desiredCapabilities = new DesiredCapabilities();
+        if ( desiredCapabilities == null )
+            desiredCapabilities = new DesiredCapabilities();
         
         setDesiredCapabilities( desiredCapabilities, dataMap );
 

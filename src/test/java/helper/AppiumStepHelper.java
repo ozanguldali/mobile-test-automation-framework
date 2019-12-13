@@ -18,6 +18,12 @@ import static util.PropertiesUtil.NEW_COMMAND_TIMEOUT;
 
 public class AppiumStepHelper {
 
+    public static void setPropertiedCapabilities(DesiredCapabilities desiredCapabilities) {
+
+
+
+    }
+
     public static void setDesiredCapabilities(DesiredCapabilities desiredCapabilities, Map<String, String> dataMap) {
 
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NO_RESET, true );
