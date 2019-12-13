@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static util.BannerUtil.paintBanner;
-import static util.EnvironmentUtil.SLASH;
+import static util.PropertiesUtil.SLASH;
 //import static util.SshTunnelUtil.openTunnel;
 
 public class BaseRerunTest {

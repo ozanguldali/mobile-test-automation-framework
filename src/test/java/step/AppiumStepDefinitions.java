@@ -9,6 +9,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.junit.Assert;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import util.PropertiesUtil;
 
 import java.net.URL;
 import java.util.Map;
@@ -19,10 +20,10 @@ import static util.AppiumUtil.startAppiumServer;
 import static util.AppiumUtil.stopAppiumServer;
 import static util.CommonStepUtil.closeAppiumDriver;
 import static util.DriverUtil.setDriver;
-import static util.EnvironmentUtil.APPIUM_HOST;
-import static util.EnvironmentUtil.APPIUM_PORT;
 import static util.LoggingUtil.LOGGER;
+import static util.PropertiesUtil.*;
 import static util.ServerUtil.isPortAvailableSocket;
+import static util.HasMapUtil.config;
 
 public class AppiumStepDefinitions {
 
@@ -76,6 +77,8 @@ public class AppiumStepDefinitions {
 
     @Given("^I use following capabilities:$")
     public static void useCapabilities(Map<String, String> dataMap) {
+
+        String s = PROJECT_DIR;
 
         desiredCapabilities = new DesiredCapabilities();
         

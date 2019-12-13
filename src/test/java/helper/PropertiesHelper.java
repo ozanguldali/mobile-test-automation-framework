@@ -1,27 +1,95 @@
 package helper;
 
+import org.testng.Assert;
+import util.PropertiesUtil;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertiesHelper {
+import static util.LoggingUtil.LOGGER;
+import static util.HasMapUtil.config;
+import static util.PropertiesUtil.*;
 
-    private static final String CONFIG = "src/test/resources/config";
-    private static final String FILE = "config.properties";
+public abstract class PropertiesHelper {
 
+    public PropertiesHelper() {
 
+    }
+
+//    private static final String CONFIG_PATH = "src" + SLASH + "test" + SLASH + "resources" + SLASH;
+//    private static final String CONFIG_NAME = "config.properties";
+
+    protected static String getConfigFilePath() {
+
+        final String CONFIG_PATH = "src" + SLASH + "test" + SLASH + "resources" + SLASH + "config" + SLASH;
+        final String CONFIG_NAME = "config.properties";
+
+        return PROJECT_DIR + SLASH + CONFIG_PATH + CONFIG_NAME;
+
+    }
 
     public static Properties readPropertyFile(String file) {
 
+        try {
+
+            InputStream input = new FileInputStream( file );
+            Throwable t = null;
+
+            try {
+
+                properties.load( input );
+
+            } catch ( Throwable e ) {
+
+                t = e;
+                LOGGER.fatal( "\tThe properties file could NOT loaded [" + file + "]; error: " + e.getMessage() + "\t\n" );
+
+            } finally {
+
+                if ( t != null ) {
+
+                    try {
+
+                        input.close();
+
+                    } catch ( Throwable e ) {
+
+                        t.addSuppressed( e );
+
+                    }
+
+                } else {
+
+                    input.close();
+
+                }
+
+
+            }
+
+        } catch ( Exception e ) {
+
+            LOGGER.fatal( "\tException on reading Properties File [" + file + "]; error: " + e.getMessage() + "\t\n" );
+            Assert.fail( "\tException on reading Properties File [" + file + "]; error: " + e.getMessage() + "\t\n" );
+
+        }
+
+        return properties;
+
+    }
+
+
+    public static Properties old_readPropertyFile(String file) {
+
         FileInputStream fileInputStream = null;
-        Properties configProps = null;
 
         try {
             fileInputStream = new FileInputStream(file);
-            configProps = new Properties();
 
-            configProps.load(fileInputStream);
+            PropertiesUtil.properties.load(fileInputStream);
 
         } catch (FileNotFoundException e) {
 
@@ -43,26 +111,65 @@ public class PropertiesHelper {
             }
         }
 
-        return configProps;
-
+        return PropertiesUtil.properties;
 
     }
 
-    public static String setProperty(String key, String device) {
+    public static void setConfigProperty(String config_file) {
+
+        Properties properties = readPropertyFile( config_file );
+
+        try {
+
+            properties.forEach( (k, v) -> {
+
+                config.put( k.toString(), v );
+
+            } );
+
+        } catch ( Exception e ) {
+
+            LOGGER.fatal( "\tThe Config Properties Map Could NOT Set.\t\n" );
+            Assert.fail( "\tThe Config Properties Map Could NOT Set.\t\n" );
+
+        }
+
+    }
+
+    public static String setProperty(String key) {
 
         String value = "";
 
-        Properties properties = readPropertyFile(CONFIG + FILE);
-        try{
+        Properties properties = readPropertyFile( CONFIG_FILE );
 
-            value = properties.getProperty(device + "." + key);
+        if ( !properties.containsKey( key ) ) {
 
-        }catch (Exception e){
-            e.printStackTrace();
+            LOGGER.info( String.format( "\tProperties file does NOT contain key, thus key: [%s] -> value: [ %s ]\t\n", key, value ) );
+            return value;
+
+        } else {
+
+            try {
+
+                value = properties.getProperty( key );
+                LOGGER.info( String.format( "\tProperties key: [%s] -> value: [ %s ]\t\n", key, value ) );
+
+            } catch ( Exception e ) {
+
+                LOGGER.warn( String.format( "\tKey [%s] could NOT get from Properties file, error: [ %s ]\t\n", key, e.getMessage() ) );
+                Assert.fail( String.format( "\tKey [%s] could NOT get from Properties file, error: [ %s ]\t\n", key, e.getMessage() ) );
+
+            }
+
+            return value;
+
         }
 
-        return value;
     }
 
+    public static String setDeviceProperty(String key, String device) {
+
+        return setProperty( device + "." + key );
+    }
 
 }

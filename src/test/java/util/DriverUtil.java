@@ -8,8 +8,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.net.URL;
 
-import static util.EnvironmentUtil.OS_VALUE;
-import static util.EnvironmentUtil.SLASH;
+import static util.PropertiesUtil.OS_VALUE;
+import static util.PropertiesUtil.SLASH;
 import static util.LoggingUtil.LOGGER;
 
 public class DriverUtil {

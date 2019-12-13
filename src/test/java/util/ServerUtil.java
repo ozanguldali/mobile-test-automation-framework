@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static step.CommonStepDefinitions.waitForNSeconds;
-import static util.EnvironmentUtil.OS_VALUE;
+import static util.PropertiesUtil.OS_VALUE;
 import static util.LoggingUtil.LOGGER;
 
 public class ServerUtil {

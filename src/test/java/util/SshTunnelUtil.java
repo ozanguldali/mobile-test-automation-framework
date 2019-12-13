@@ -1,15 +1,12 @@
 package util;
 
-import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.Session;
 import org.junit.Assert;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
-import static util.EnvironmentUtil.*;
+import static util.PropertiesUtil.*;
 import static util.LoggingUtil.LOGGER;
 
 public class SshTunnelUtil {

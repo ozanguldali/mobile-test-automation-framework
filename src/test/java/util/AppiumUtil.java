@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static step.AppiumStepDefinitions.service;
-import static util.EnvironmentUtil.ENV_MAP;
+import static util.PropertiesUtil.ENV_MAP;
 import static util.LoggingUtil.LOGGER;
 
 public class AppiumUtil {

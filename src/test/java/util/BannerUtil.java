@@ -5,8 +5,8 @@ import org.junit.Assert;
 import java.io.FileReader;
 
 import static helper.BannerHelper.setFileToConsole;
-import static util.EnvironmentUtil.PROJECT_DIR;
-import static util.EnvironmentUtil.SLASH;
+import static util.PropertiesUtil.PROJECT_DIR;
+import static util.PropertiesUtil.SLASH;
 import static util.LoggingUtil.LOGGER;
 
 public class BannerUtil {

@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import static step.AppiumStepDefinitions.appiumDriver;
 import static util.CommonStepUtil.*;
 import static util.LoggingUtil.LOGGER;
+import static util.HasMapUtil.context;
 
 public class CommonStepDefinitions {
 
@@ -19,7 +20,7 @@ public class CommonStepDefinitions {
 
     @Before
     public void beforeScenario(Scenario scenario) {
-
+        context.clear();
         LOGGER.info( String.format( "\t[%d] > Scenario [%s] started\t\n", ++scenariosCounter, scenario.getName() ) );
 
     }

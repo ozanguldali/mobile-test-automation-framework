@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import static util.LoggingUtil.LOGGER;
+import static util.PropertiesUtil.PROJECT_DIR;
+import static util.PropertiesUtil.SLASH;
 
 public class ParserUtil {
 
@@ -18,9 +20,9 @@ public class ParserUtil {
 
         try {
 
-            FileReader fileReader = new FileReader( EnvironmentUtil.PROJECT_DIR
-                                                    + EnvironmentUtil.SLASH + "src" + EnvironmentUtil.SLASH + "test" + EnvironmentUtil.SLASH + "resources" + EnvironmentUtil.SLASH + "config"
-                                                    + EnvironmentUtil.SLASH + jsonFile + ".json" );
+            FileReader fileReader = new FileReader( PROJECT_DIR
+                                                    + SLASH + "src" + SLASH + "test" + SLASH + "resources" + SLASH + "config"
+                                                    + SLASH + jsonFile + ".json" );
             object = jsonParser.parse( fileReader );
 
         } catch ( FileNotFoundException fne) {

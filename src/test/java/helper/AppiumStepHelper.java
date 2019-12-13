@@ -12,8 +12,9 @@ import java.util.Map;
 
 import static step.AppiumStepDefinitions.host;
 import static step.AppiumStepDefinitions.port;
-import static util.EnvironmentUtil.NEW_COMMAND_TIMEOUT;
+import static util.HasMapUtil.config;
 import static util.LoggingUtil.LOGGER;
+import static util.PropertiesUtil.NEW_COMMAND_TIMEOUT;
 
 public class AppiumStepHelper {
 
@@ -22,7 +23,7 @@ public class AppiumStepHelper {
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NO_RESET, true );
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.FULL_RESET, false );
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true );
-        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, NEW_COMMAND_TIMEOUT );
+        setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.parseInt( NEW_COMMAND_TIMEOUT ) );
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.TAKES_SCREENSHOT, true );
         setDefaultCapabilities( dataMap, desiredCapabilities, "isHeadless", true );
         setDefaultCapabilities( dataMap, desiredCapabilities, "adbExecTimeout", 60000 );
@@ -97,6 +98,7 @@ public class AppiumStepHelper {
     }
 
     private static void setDesiredCapabilities(DesiredCapabilities desiredCapabilities, String key, Object value) {
+
 
         desiredCapabilities.setCapability( key, value );
         LOGGER.info( "\tThe capability key: [" + key + "] set as value: [" + value + "].\t\n" );

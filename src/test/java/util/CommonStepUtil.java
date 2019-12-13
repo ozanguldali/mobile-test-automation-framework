@@ -6,8 +6,9 @@ import org.junit.Assert;
 import static step.AppiumStepDefinitions.appiumDriver;
 import static step.AppiumStepDefinitions.desiredCapabilities;
 import static step.CommonStepDefinitions.waitForNSeconds;
-import static util.EnvironmentUtil.NEW_COMMAND_TIMEOUT;
+import static util.HasMapUtil.config;
 import static util.LoggingUtil.LOGGER;
+import static util.PropertiesUtil.NEW_COMMAND_TIMEOUT;
 
 public class CommonStepUtil {
 
@@ -56,7 +57,7 @@ public class CommonStepUtil {
 
         } catch (Exception e) {
 
-            waitForNSeconds( NEW_COMMAND_TIMEOUT + 5  );
+            waitForNSeconds( Integer.parseInt( NEW_COMMAND_TIMEOUT ) + 5  );
 
             LOGGER.info( String.format( "\tThe appium driver session: [ %s ] could NOT been closed\t\n", appiumDriver.getSessionId() ) );
             Assert.fail( String.format( "\tThe appium driver session: [ %s ] could NOT been closed\t\n", appiumDriver.getSessionId() ) );
