@@ -8,7 +8,7 @@ Feature: iPhone 11 Feature
       |platformName|iOS|
       |platformVersion|13.2|
 #      |browserName|Safari|
-      |deviceName|Pixery ip 11|
+      |deviceName|Pixery iOS - 005 |
       |udid      |00008030-0010059E1E90802E|
       |xcodeOrgId|9B7X2U2FRF |
       |xcodeSigningId| iPhone Developer |
