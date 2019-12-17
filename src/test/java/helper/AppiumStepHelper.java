@@ -7,9 +7,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import util.ParserUtil;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import static helper.PropertiesHelper.setDeviceProperty;
 import static step.AppiumStepDefinitions.host;
 import static step.AppiumStepDefinitions.port;
 import static util.HasMapUtil.config;
@@ -18,9 +18,32 @@ import static util.PropertiesUtil.NEW_COMMAND_TIMEOUT;
 
 public class AppiumStepHelper {
 
-    public static void setPropertiedCapabilities(DesiredCapabilities desiredCapabilities) {
+    private static Map< String, List< String > > capabilityKeyMap = new HashMap<String, List<String>>() {{
 
+        put( "default", Arrays.asList( "automationName", "platformName", "platformVersion", "deviceName", "udid" ) );
 
+        put( "iOS", Arrays.asList( "xcodeOrgId", "xcodeSigningId", "platformVersion", "deviceName", "udid" ));
+
+        put( "Android", Arrays.asList( ) );
+
+    }};
+
+    public static void setPropertiedCapabilities(DesiredCapabilities desiredCapabilities, String osTag, String deviceTag) {
+
+        if ( ! ( osTag.equals( "iOS" ) || osTag.equals( "Android" ) ) ) {
+
+            LOGGER.warn( "\tUnknown Device OS Type: [" + osTag + "]\t\n" );
+            Assert.fail( "\tUnknown Device OS Type: [" + osTag + "]\t\n" );
+
+        }
+
+        Map<String, String> dataMap = new HashMap<>();
+
+        capabilityKeyMap.get( "default" ).forEach( v -> dataMap.put( v, setDeviceProperty( deviceTag, v ) ) );
+
+        capabilityKeyMap.get( osTag ).forEach( v -> dataMap.put( v, setDeviceProperty( deviceTag, v ) ) );
+
+        setDesiredCapabilities( desiredCapabilities, dataMap );
 
     }
 
@@ -113,7 +136,7 @@ public class AppiumStepHelper {
 
     private static void setDefaultCapabilities(Map<String, String> dataMap, DesiredCapabilities desiredCapabilities, String defaultKey, Object defaultValue) {
 
-        if ( !dataMap.containsKey( defaultKey ) ) {
+        if ( !dataMap.containsKey( defaultKey ) && desiredCapabilities.asMap().containsKey( defaultKey ) ) {
 
             desiredCapabilities.setCapability( defaultKey, defaultValue );
             LOGGER.info( "\tThe capability key: [" + defaultKey + "] set as value: [" + defaultValue + "].\t\n" );

@@ -1,6 +1,7 @@
 package step;
 
 import com.google.gson.JsonObject;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
@@ -20,6 +21,7 @@ import static util.AppiumUtil.startAppiumServer;
 import static util.AppiumUtil.stopAppiumServer;
 import static util.CommonStepUtil.closeAppiumDriver;
 import static util.DriverUtil.setDriver;
+import static util.HasMapUtil.context;
 import static util.LoggingUtil.LOGGER;
 import static util.PropertiesUtil.*;
 import static util.ServerUtil.isPortAvailableSocket;
@@ -75,13 +77,13 @@ public class AppiumStepDefinitions {
 
     }
 
-    @Given("^I use propertied capabilities$")
-    public static void usePropertiedCapabilities() {
+    @Given("^I use propertied capabilities for (\\w+(?: \\w+)*) device (\\w+(?: \\w+)*)$")
+    public static void usePropertiedCapabilities(String osTag, String deviceTag) {
 
         if ( desiredCapabilities == null )
             desiredCapabilities = new DesiredCapabilities();
 
-        setPropertiedCapabilities( desiredCapabilities );
+        setPropertiedCapabilities( desiredCapabilities, osTag, deviceTag );
 
     }
 

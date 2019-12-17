@@ -4,11 +4,6 @@ Feature: mi phone Feature
   Background:
 
     Given I use following capabilities:
-      | udid | b2592939 |
-      | automationName| UiAutomator1 |
-      |platformName|Android|
-      |platformVersion|9|
-      |deviceName|Mi Phone|
 #      |bundleId      | com.pixerylabs.funimatetest |
       | appPackage   | com.pixerylabs.funimatetest |
       | appActivity  |  com.avcrbt.funimate.activity.StartActivity |

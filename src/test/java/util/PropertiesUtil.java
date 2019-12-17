@@ -21,7 +21,6 @@ public final class PropertiesUtil extends PropertiesHelper {
     public static final String APPIUM_HOST = setProperty( "appiumHost" );
     public static final String APPIUM_PORT = setProperty( "appiumPort" );
     public static final String NEW_COMMAND_TIMEOUT = setProperty( "appiumNewCommandTimeout" );
-    public static final String TRY = setProperty( "try" );
 
     public PropertiesUtil() {
 

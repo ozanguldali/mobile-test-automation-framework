@@ -1,9 +1,11 @@
 package step;
 
+import cucumber.api.DataTable;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import gherkin.formatter.model.DataTableRow;
 import gherkin.formatter.model.Feature;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
@@ -21,6 +23,7 @@ public class CommonStepDefinitions {
 
     @Before
     public void beforeScenario(Scenario scenario) {
+
         context.clear();
         LOGGER.info( String.format( "\t[%d] > Scenario [%s] started\t\n", ++scenariosCounter, scenario.getName() ) );
 
@@ -91,6 +94,22 @@ public class CommonStepDefinitions {
 
             LOGGER.error( "\tError during waiting for [" + seconds + "] seconds.\t\n", e );
             Assert.fail();
+
+        }
+
+    }
+
+    @Given("^I set following key value pairs to context$")
+    public static void setValuesToContext(DataTable dataTable) {
+
+        for ( DataTableRow row : dataTable.getGherkinRows() ) {
+
+            String key      =   row.getCells().get( 0 );
+            String value    =   row.getCells().get( 1 );
+
+            context.put( key, value );
+
+            LOGGER.info( String.format( "\tThe key [%s] : value [%s] is set to the context\t\n", key, value ) );
 
         }
 

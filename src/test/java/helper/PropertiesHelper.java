@@ -145,7 +145,6 @@ public abstract class PropertiesHelper {
         if ( !properties.containsKey( key ) ) {
 
             LOGGER.info( String.format( "\tProperties file does NOT contain key, thus key: [%s] -> value: [ %s ]\t\n", key, value ) );
-            return value;
 
         } else {
 
@@ -161,15 +160,14 @@ public abstract class PropertiesHelper {
 
             }
 
-            return value;
-
         }
+        return value;
 
     }
 
-    public static String setDeviceProperty(String key, String device) {
+    public static String setDeviceProperty(String deviceTag, String key) {
 
-        return setProperty( device + "." + key );
+        return setProperty( deviceTag + "." + key );
     }
 
 }
