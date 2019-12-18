@@ -1,4 +1,4 @@
-@ipad
+@ignore
 Feature: iPad Mini 4 Feature
 
   Background:

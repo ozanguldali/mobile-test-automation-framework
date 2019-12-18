@@ -12,6 +12,7 @@ import static util.PropertiesUtil.SLASH;
 //import static util.SshTunnelUtil.openTunnel;
 
 public class BaseRerunTest {
+
     private static final String RERUN_DIR = "build/rerun";
 
     public BaseRerunTest() {
@@ -21,7 +22,6 @@ public class BaseRerunTest {
         //openTunnel();
 
     }
-
 
     @Factory
     public Object[] createTests() {

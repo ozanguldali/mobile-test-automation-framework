@@ -1,4 +1,4 @@
-@iphone
+@ignore
 Feature: iPhone 7 Feature
 
   Background:

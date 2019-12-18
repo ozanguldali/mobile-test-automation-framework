@@ -49,6 +49,8 @@ public class AppiumStepHelper {
 
     public static void setDesiredCapabilities(DesiredCapabilities desiredCapabilities, Map<String, String> dataMap) {
 
+
+
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.NO_RESET, true );
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.FULL_RESET, false );
         setDefaultCapabilities( dataMap, desiredCapabilities, MobileCapabilityType.CLEAR_SYSTEM_FILES, true );

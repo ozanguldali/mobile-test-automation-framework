@@ -12,7 +12,7 @@ Feature: Deneme Feature
       | bundleId | com.avcr.impressodev |
 
   @ios
-  Scenario: 0 - ios test init scenario
+  Scenario: 0 scenario
 
     Given I use appium driver
 
@@ -20,10 +20,10 @@ Feature: Deneme Feature
 
     Then I close driver
 
-    And I wait for 3 seconds
-
-    And I use appium driver
-
-    And I wait for 5 seconds
-
-    Then I close driver
+#    And I wait for 3 seconds
+#
+#    And I use appium driver
+#
+#    And I wait for 5 seconds
+#
+#    Then I close driver

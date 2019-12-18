@@ -1,4 +1,4 @@
-@huawei
+@ignore
 Feature: Huawei Mate 20 Lite Feature
 
   Background:

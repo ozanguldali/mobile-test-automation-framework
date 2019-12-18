@@ -10,8 +10,10 @@ import gherkin.formatter.model.Feature;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static step.AppiumStepDefinitions.appiumDriver;
+import static step.AppiumStepDefinitions.desiredCapabilities;
 import static util.CommonStepUtil.*;
 import static util.LoggingUtil.LOGGER;
 import static util.HasMapUtil.context;
@@ -25,6 +27,9 @@ public class CommonStepDefinitions {
     public void beforeScenario(Scenario scenario) {
 
         context.clear();
+
+        desiredCapabilities = new DesiredCapabilities();
+
         LOGGER.info( String.format( "\t[%d] > Scenario [%s] started\t\n", ++scenariosCounter, scenario.getName() ) );
 
     }
@@ -46,7 +51,7 @@ public class CommonStepDefinitions {
                 } catch (Exception e) {
 
                     LOGGER.info(String.format("\tThe screenshot could NOT been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
-                    Assert.fail(String.format("\tThe screenshot could NOT been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
+//                    Assert.fail(String.format("\tThe screenshot could NOT been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
 
                 }
 

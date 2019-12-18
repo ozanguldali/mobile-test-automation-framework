@@ -1,4 +1,4 @@
-@mi
+@ignore
 Feature: mi phone Feature
 
   Background:

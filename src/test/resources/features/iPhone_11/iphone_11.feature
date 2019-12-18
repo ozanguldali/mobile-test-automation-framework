@@ -1,4 +1,4 @@
-@iphone
+@ignore
 Feature: iPhone 11 Feature
 
   Background:
