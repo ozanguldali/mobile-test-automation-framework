@@ -20,7 +20,7 @@ public abstract class PropertiesHelper {
     }
 
 //    private static final String CONFIG_PATH = "src" + SLASH + "test" + SLASH + "resources" + SLASH;
-//    private static final String CONFIG_NAME = "config.properties";
+//    private static final String CONFIG_NAME = "feature.properties";
 
     protected static String getConfigFilePath() {
 
@@ -28,6 +28,14 @@ public abstract class PropertiesHelper {
         final String CONFIG_NAME = "config.properties";
 
         return PROJECT_DIR + SLASH + CONFIG_PATH + CONFIG_NAME;
+
+    }
+
+    protected static String getFeaturePropertyFilePath() {
+
+        final String FEATURE_PROPERTY_PATH = "src" + SLASH + "test" + SLASH + "resources" + SLASH + "features" + SLASH;
+
+        return PROJECT_DIR + SLASH + FEATURE_PROPERTY_PATH;
 
     }
 
@@ -81,8 +89,7 @@ public abstract class PropertiesHelper {
 
     }
 
-
-    public static Properties old_readPropertyFile(String file) {
+    /*public static Properties old_readPropertyFile(String file) {
 
         FileInputStream fileInputStream = null;
 
@@ -113,9 +120,9 @@ public abstract class PropertiesHelper {
 
         return PropertiesUtil.properties;
 
-    }
+    }*/
 
-    public static void setConfigProperty(String config_file) {
+/*    public static void setConfigProperty(String config_file) {
 
         Properties properties = readPropertyFile( config_file );
 
@@ -134,13 +141,13 @@ public abstract class PropertiesHelper {
 
         }
 
-    }
+    }*/
 
-    public static String setProperty(String key) {
+    public static String setProperty(String file, String key) {
 
         String value = "";
 
-        Properties properties = readPropertyFile( CONFIG_FILE );
+        Properties properties = readPropertyFile( file );
 
         if ( !properties.containsKey( key ) ) {
 
@@ -165,9 +172,14 @@ public abstract class PropertiesHelper {
 
     }
 
-    public static String setDeviceProperty(String deviceTag, String key) {
+    public static String setDeviceProperty(String fileName, String key) {
 
-        return setProperty( deviceTag + "." + key );
+        final String CONFIG_NAME = "feature.properties";
+
+        final String file = FEATURE_PROPERTY_FILE + fileName + SLASH + CONFIG_NAME;
+
+        return setProperty( file, key );
+
     }
 
 }

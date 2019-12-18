@@ -17,10 +17,11 @@ public final class PropertiesUtil extends PropertiesHelper {
     public static final Properties properties = new Properties();
 
     public static final String CONFIG_FILE = getConfigFilePath();
+    public static final String FEATURE_PROPERTY_FILE = getFeaturePropertyFilePath();
 
-    public static final String APPIUM_HOST = setProperty( "appiumHost" );
-    public static final String APPIUM_PORT = setProperty( "appiumPort" );
-    public static final String NEW_COMMAND_TIMEOUT = setProperty( "appiumNewCommandTimeout" );
+    public static final String APPIUM_HOST = setProperty( CONFIG_FILE, "appiumHost" );
+    public static final String APPIUM_PORT = setProperty( CONFIG_FILE, "appiumPort" );
+    public static final String NEW_COMMAND_TIMEOUT = setProperty( CONFIG_FILE, "appiumNewCommandTimeout" );
 
     public PropertiesUtil() {
 

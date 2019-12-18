@@ -22,7 +22,7 @@ public class AppiumStepHelper {
 
         put( "default", Arrays.asList( "automationName", "platformName", "platformVersion", "deviceName", "udid" ) );
 
-        put( "iOS", Arrays.asList( "xcodeOrgId", "xcodeSigningId", "platformVersion", "deviceName", "udid" ));
+        put( "iOS", Arrays.asList( "xcodeOrgId", "xcodeSigningId" ) );
 
         put( "Android", Arrays.asList( ) );
 
@@ -39,9 +39,9 @@ public class AppiumStepHelper {
 
         Map<String, String> dataMap = new HashMap<>();
 
-        capabilityKeyMap.get( "default" ).forEach( v -> dataMap.put( v, setDeviceProperty( deviceTag, v ) ) );
+        capabilityKeyMap.get( "default" ).forEach( k -> dataMap.put( k, setDeviceProperty( deviceTag, k ) ) );
 
-        capabilityKeyMap.get( osTag ).forEach( v -> dataMap.put( v, setDeviceProperty( deviceTag, v ) ) );
+        capabilityKeyMap.get( osTag ).forEach( k -> dataMap.put( k, setDeviceProperty( deviceTag, k ) ) );
 
         setDesiredCapabilities( desiredCapabilities, dataMap );
 
