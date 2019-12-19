@@ -23,10 +23,12 @@ public class CommonStepDefinitions {
     private static int scenariosCounter = 0;
     private static int failedScenariosCounter = 0;
 
+
     @Before
     public void beforeScenario(Scenario scenario) {
 
         context.clear();
+        context.put("scenario", scenario);
 
         desiredCapabilities = new DesiredCapabilities();
 
@@ -45,7 +47,8 @@ public class CommonStepDefinitions {
 
                 try {
 
-                    scenario.embed( ( ( TakesScreenshot ) appiumDriver ).getScreenshotAs( OutputType.BYTES ), "image/png" );
+                    //scenario.embed( ( ( TakesScreenshot ) appiumDriver ).getScreenshotAs( OutputType.BYTES ), "image/png" );
+                    takeScreenshot(scenario);
                     LOGGER.info(String.format("\tThe screenshot has been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
 
                 } catch (Exception e) {
@@ -85,6 +88,12 @@ public class CommonStepDefinitions {
         LOGGER.info(String.format( "\t[%d] > Scenario [%s] finished %s\n\t", scenariosCounter, scenario.getName(), result ) );
         LOGGER.info(String.format( "\t%d of %d scenarios failed so far\n\t", failedScenariosCounter, scenariosCounter ) );
 
+    }
+
+    @Given("^I take screenshot$")
+    public void takeScenarioScreenshot() {
+        Scenario scenario = (Scenario) context.get("scenario");
+        takeScreenshot(scenario);
     }
 
     @Given("^I wait for (\\d+) seconds$")

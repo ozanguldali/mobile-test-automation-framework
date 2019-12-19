@@ -1,4 +1,4 @@
-@android
+@ignore
 Feature: Deneme Feature
 
   Background:

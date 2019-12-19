@@ -1,7 +1,10 @@
 package util;
 
+import cucumber.api.Scenario;
 import io.appium.java_client.AppiumDriver;
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static step.AppiumStepDefinitions.appiumDriver;
 import static step.AppiumStepDefinitions.desiredCapabilities;
@@ -85,6 +88,13 @@ public class CommonStepUtil {
             Assert.fail( String.format( "\tThe appium driver: [ %s ] could NOT been killed\t\n", appiumDriver.toString() ) );
 
         }
+
+    }
+
+    public static void takeScreenshot(Scenario scenario){
+
+        byte[] screenshot = ((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES);
+        scenario.embed(screenshot, "image/png");
 
     }
 
