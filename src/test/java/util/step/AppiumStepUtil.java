@@ -1,4 +1,4 @@
-package util;
+package util.step;
 
 import io.appium.java_client.AppiumDriver;
 import org.junit.Assert;

@@ -1,32 +1,27 @@
 package step;
 
 import com.google.gson.JsonObject;
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.junit.Assert;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import util.PropertiesUtil;
 
 import java.net.URL;
 import java.time.Duration;
 import java.util.Map;
 
-import static helper.AppiumStepHelper.*;
-import static util.AppiumStepUtil.navigateToURL;
+import static helper.step.AppiumStepHelper.*;
+import static util.step.AppiumStepUtil.navigateToURL;
 import static util.AppiumUtil.startAppiumServer;
 import static util.AppiumUtil.stopAppiumServer;
-import static util.CommonStepUtil.closeAppiumDriver;
+import static util.step.CommonStepUtil.closeAppiumDriver;
 import static util.DriverUtil.setDriver;
-import static util.HasMapUtil.context;
 import static util.LoggingUtil.LOGGER;
 import static util.PropertiesUtil.*;
 import static util.ServerUtil.isPortAvailableSocket;
-import static util.HasMapUtil.config;
 
 public class AppiumStepDefinitions {
 

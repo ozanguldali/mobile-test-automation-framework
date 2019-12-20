@@ -1,4 +1,4 @@
-package helper;
+package helper.step;
 
 import com.google.gson.JsonObject;
 import io.appium.java_client.remote.MobileCapabilityType;

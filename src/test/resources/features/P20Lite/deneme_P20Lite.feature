@@ -35,7 +35,7 @@ Feature: Deneme Feature
 #
 #    Then I close driver
 
-  @android
+  @android @ignore
   Scenario: 1 scenario
 
     Given I use appium driver

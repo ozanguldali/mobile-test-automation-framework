@@ -5,7 +5,7 @@ import org.junit.Assert;
 
 import java.util.HashMap;
 
-import static util.CommonStepUtil.replaceSavedElement;
+import static util.step.CommonStepUtil.replaceSavedElement;
 import static util.LoggingUtil.*;
 
 public class JsonHelper {

@@ -10,21 +10,20 @@ import io.restassured.path.json.JsonPath;
 import okhttp3.Response;
 import org.junit.Assert;
 import util.ParserUtil;
-import util.RestStepUtil;
+import util.step.RestStepUtil;
 
 import java.util.HashMap;
 
 import static helper.JsonHelper.setSavedElements;
 import static helper.ParserHelper.getJsonPathValue;
-import static helper.RestStepHelper.setResponseObjects;
-import static helper.RestStepHelper.getResponsePathValue;
-import static helper.RestStepHelper.setResponseObjects;
+import static helper.step.RestStepHelper.setResponseObjects;
+import static helper.step.RestStepHelper.getResponsePathValue;
 import static util.HasMapUtil.context;
 import static util.LoggingUtil.LOGGER;
 import static util.PropertiesUtil.REST_HOST;
 import static util.RestUtil.manageRestFile;
-import static util.CommonStepUtil.*;
-import static util.RestStepUtil.checkStatusCode;
+import static util.step.CommonStepUtil.*;
+import static util.step.RestStepUtil.checkStatusCode;
 
 public class RestStepDefinitions {
 

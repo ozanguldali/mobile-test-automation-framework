@@ -6,15 +6,12 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import gherkin.formatter.model.DataTableRow;
-import gherkin.formatter.model.Feature;
 import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static step.AppiumStepDefinitions.appiumDriver;
 import static step.AppiumStepDefinitions.desiredCapabilities;
-import static util.CommonStepUtil.*;
+import static util.step.CommonStepUtil.*;
 import static util.LoggingUtil.LOGGER;
 import static util.HasMapUtil.context;
 

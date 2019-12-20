@@ -1,4 +1,4 @@
-package util;
+package util.step;
 
 import cucumber.api.Scenario;
 import org.junit.Assert;
@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-import static helper.CommonStepHelper.getCheckDigit;
+import static helper.step.CommonStepHelper.getCheckDigit;
 import static step.AppiumStepDefinitions.appiumDriver;
 import static step.AppiumStepDefinitions.desiredCapabilities;
 import static step.CommonStepDefinitions.waitForNSeconds;
