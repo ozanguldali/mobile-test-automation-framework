@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import util.PropertiesUtil;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.Map;
 
 import static helper.AppiumStepHelper.*;
@@ -118,7 +119,7 @@ public class AppiumStepDefinitions {
 
                 appiumDriver = setDriver( driverSelect, url, desiredCapabilities );
 
-                LOGGER.info( String.format("\tDriver has been selected as: [%s]\t\n", driverSelect ) );
+                LOGGER.info( String.format( "\tDriver has been selected as: [%s]\t\n", driverSelect ) );
 
             } catch ( Exception e ) {
 
@@ -126,6 +127,40 @@ public class AppiumStepDefinitions {
                 Assert.fail( String.format( "\tDriver could NOT been selected as: [%s], because { error: [%s] }\t\n", driverSelect, e.getMessage() ) );
 
             }
+
+        }
+
+    }
+
+    @Given("^I run the app in background for (\\d+) seconds$")
+    public void runAppInBackgroundForSeconds(int seconds) {
+
+        try {
+
+            appiumDriver.runAppInBackground( Duration.ofSeconds( seconds == 0 ? null : seconds ) );
+            LOGGER.info( String.format( "\tApp is running in background for [%d] seconds\t\n", seconds ) );
+
+        } catch (Exception e) {
+
+            LOGGER.info( String.format( "\tApp could not send to background, because { error: [%s] }\t\n", e.getMessage() ) );
+            Assert.fail( String.format( "\tApp could not send to background, because { error: [%s] }\t\n", e.getMessage() ) );
+
+        }
+
+    }
+
+    @Given("^I run the app in background entirely$")
+    public void runAppInBackgroundEntirely() {
+
+        try {
+
+            appiumDriver.runAppInBackground( Duration.ofSeconds( -1 ) );
+            LOGGER.info( "\tApp is running in background entirely\t\n" );
+
+        } catch (Exception e) {
+
+            LOGGER.info( String.format( "\tApp could not send to background, because { error: [%s] }\t\n", e.getMessage() ) );
+            Assert.fail( String.format( "\tApp could not send to background, because { error: [%s] }\t\n", e.getMessage() ) );
 
         }
 

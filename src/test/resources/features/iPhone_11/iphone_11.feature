@@ -15,7 +15,7 @@ Feature: iPhone 11 Feature
       |bundleId      | com.avcr.impresso |
       | WDALOCALPORT   | 8201              |
 
-  @ios
+  @ios @ignore
   Scenario: 0 - ios test init scenario
 
     Given I use appium driver
@@ -30,19 +30,17 @@ Feature: iPhone 11 Feature
 
     And I open google page
 
-  @ios @ignore
+  @ios
   Scenario: 1 - ios test init scenario
 
     Given I use appium driver
 
     And I wait for 5 seconds
 
-    Then I close driver
+    And I take screenshot
 
-    And I wait for 5 seconds
+    Then I run the app in background entirely
 
-    And I use appium driver
+    And I take screenshot
 
-    And I wait for 5 seconds
-
-    Then I close driver
+    And I open avcr page

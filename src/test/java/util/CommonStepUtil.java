@@ -31,7 +31,7 @@ public class CommonStepUtil {
 
         try {
 
-            appiumDriver.closeApp();
+//            appiumDriver.closeApp();
 
 //            appiumDriver.close();
 
@@ -41,9 +41,7 @@ public class CommonStepUtil {
 
             goRestService( "closeApp" );
 
-            LOGGER.info( String.format( "\tThe appium driver: [ %s ] has been closed.\t\n", appiumDriver.getSessionId() ) );
-
-            takeScreenshot((Scenario) context.get( "scenario" ));
+            LOGGER.info( String.format( "\tThe appium driver: [ %s ] has been closed.\t\n", SID ) );
 
         } catch (Exception e) {
 

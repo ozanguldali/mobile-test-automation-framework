@@ -12,7 +12,7 @@ Feature: Deneme Feature
       | appPackage   | com.pixerylabs.funimatetest |
       | appActivity  |  com.avcrbt.funimate.activity.StartActivity |
 
-  @android
+  @android @ignore
   Scenario: 0 scenario
 
     Given I use appium driver
@@ -34,3 +34,18 @@ Feature: Deneme Feature
 #    And I wait for 5 seconds
 #
 #    Then I close driver
+
+  @android
+  Scenario: 1 scenario
+
+    Given I use appium driver
+
+    And I wait for 5 seconds
+
+    And I take screenshot
+
+    Then I run the app in background entirely
+
+    And I take screenshot
+
+    And I open avcr page
