@@ -1,4 +1,4 @@
-@iPhone
+@ignore
 Feature: Deneme Feature
 
   Background:

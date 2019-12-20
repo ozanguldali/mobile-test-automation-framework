@@ -1,4 +1,4 @@
-@ignore
+@android
 Feature: Deneme Feature
 
   Background:
@@ -19,7 +19,13 @@ Feature: Deneme Feature
 
     And I wait for 5 seconds
 
+    And I take screenshot
+
     Then I close driver
+
+    And I take screenshot
+
+    And I open google page
 
 #    And I wait for 3 seconds
 #

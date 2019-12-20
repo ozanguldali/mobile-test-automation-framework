@@ -45,37 +45,25 @@ public class CommonStepDefinitions {
 
             if ( appiumDriver != null ) {
 
-                try {
-
-                    //scenario.embed( ( ( TakesScreenshot ) appiumDriver ).getScreenshotAs( OutputType.BYTES ), "image/png" );
-                    takeScreenshot(scenario);
-                    LOGGER.info(String.format("\tThe screenshot has been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
-
-                } catch (Exception e) {
-
-                    LOGGER.info(String.format("\tThe screenshot could NOT been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
-//                    Assert.fail(String.format("\tThe screenshot could NOT been taken for scenario: [ %s ]\t\n", scenario.getName() ) );
-
-                }
+                takeScreenshot(scenario);
 
                 quitAppiumSession(true);
                 //closeAppiumDriver( appiumDriver );
 
             }
 
-//            if ( service != null  ) {
-//
-//                stopAppiumServer( port );
-//
-//            }
+/*            if ( service != null  ) {
+
+                stopAppiumServer( port );
+
+            }*/
 
         } else {
 
             if ( appiumDriver != null )
                 quitAppiumSession(true);
                 //closeAppiumDriver( appiumDriver );
-
-//            stopAppiumServer( port );
+                //stopAppiumServer( port );
 
         }
 

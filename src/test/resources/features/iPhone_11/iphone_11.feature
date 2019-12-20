@@ -1,4 +1,4 @@
-@ignore
+@ios
 Feature: iPhone 11 Feature
 
   Background:
@@ -22,15 +22,13 @@ Feature: iPhone 11 Feature
 
     And I wait for 5 seconds
 
-    Then I close driver
-
-    And I wait for 3 seconds
-
-    And I use appium driver
-
-    And I wait for 5 seconds
+    And I take screenshot
 
     Then I close driver
+
+    And I take screenshot
+
+    And I open google page
 
   @ios @ignore
   Scenario: 1 - ios test init scenario

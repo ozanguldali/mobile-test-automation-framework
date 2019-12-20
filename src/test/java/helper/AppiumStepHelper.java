@@ -18,15 +18,15 @@ import static util.PropertiesUtil.NEW_COMMAND_TIMEOUT;
 
 public class AppiumStepHelper {
 
-    private static Map< String, List< String > > capabilityKeyMap = new HashMap<String, List<String>>() {{
+    private static Map< String, List< String > > capabilityKeyMap = new HashMap<String, List<String>>() { {
 
-        put( "default", Arrays.asList( "automationName", "platformName", "platformVersion", "deviceName", "udid" ) );
+        put( "default", Arrays.asList( "automationName", "platformName", "platformVersion", "deviceName", "udid", "screenshotWaitTimeout" ) );
 
         put( "iOS", Arrays.asList( "xcodeOrgId", "xcodeSigningId" ) );
 
         put( "Android", Arrays.asList( ) );
 
-    }};
+    } };
 
     public static void setPropertiedCapabilities(DesiredCapabilities desiredCapabilities, String osTag, String deviceTag) {
 
@@ -99,6 +99,8 @@ public class AppiumStepHelper {
                 case MobileCapabilityType.NEW_COMMAND_TIMEOUT:
 
                 case MobileCapabilityType.TAKES_SCREENSHOT:
+
+                case "screenshotWaitTimeout":
 
                 case "WDALOCALPORT":
 
